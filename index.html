@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <title>جام جهانی 2026 - پیش‌بینی</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #111;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .card {
+      background: #222;
+      padding: 15px;
+      margin: 10px auto;
+      border-radius: 10px;
+      max-width: 400px;
+    }
+
+    input {
+      width: 60px;
+      padding: 5px;
+      margin: 5px;
+      text-align: center;
+    }
+
+    button {
+      padding: 8px 15px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>⚽ پیش‌بینی جام جهانی 2026</h1>
+  <p>نسخه ساده برای دوستان</p>
+
+  <div class="card">
+    <h3>بازی: ایران vs اسپانیا</h3>
+
+    <input id="h1" type="number" placeholder="ایران" />
+    -
+    <input id="a1" type="number" placeholder="اسپانیا" />
+
+    <br/>
+    <button onclick="save()">ثبت پیش‌بینی</button>
+
+    <p id="result"></p>
+  </div>
+
+  <script>
+    function save() {
+      let h = document.getElementById("h1").value;
+      let a = document.getElementById("a1").value;
+
+      if(h === "" || a === "") {
+        alert("عدد وارد کن");
+        return;
+      }
+
+      document.getElementById("result").innerText =
+        "پیش‌بینی شما: " + h + " - " + a;
+
+      localStorage.setItem("pred", h + "-" + a);
+    }
+
+    window.onload = function() {
+      let saved = localStorage.getItem("pred");
+      if(saved) {
+        document.getElementById("result").innerText =
+          "پیش‌بینی ذخیره شده: " + saved;
+      }
+    }
+  </script>
+
+</body>
+</html>
